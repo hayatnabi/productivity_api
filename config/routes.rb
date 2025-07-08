@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :sessions, only: [:create, :index]
-      get "stats", to: "sessions#stats"
+      post 'signup', to: 'auth#signup'
+      post 'login', to: 'auth#login'
+      delete 'logout', to: 'auth#logout'
     end
   end
   
