@@ -47,6 +47,10 @@ class Api::V1::AuthController < ApplicationController
 
       break_duration = (Time.current - last_session.end_time).to_i
 
+      # Creating a revoked token entry
+      token = request.headers['Authorization']&.split(' ')&.last
+      RevokedToken.create!(token: token)
+
       render json: {
         message: "Logout successful, session ended.",
         session_duration: last_session.duration,

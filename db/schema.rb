@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_08_092421) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_09_035240) do
   create_table "productivity_sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "start_time"
@@ -19,6 +19,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_092421) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_productivity_sessions_on_user_id"
+  end
+
+  create_table "revoked_tokens", force: :cascade do |t|
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
